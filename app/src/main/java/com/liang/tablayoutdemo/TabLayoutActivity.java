@@ -16,7 +16,7 @@ import java.util.List;
 
 public class TabLayoutActivity extends AppCompatActivity {
 
-    private TabLayout tl;
+    private TabLayout mTabLayout;
     private ViewPager vp;
 
     //当标签数目小于等于4个时，标签栏不可滑动
@@ -31,7 +31,7 @@ public class TabLayoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tablayout);
 
-        tl = findViewById(R.id.tl);
+        mTabLayout = findViewById(R.id.mTabLayout);
         vp = findViewById(R.id.vp);
 
         initDatas();
@@ -41,20 +41,24 @@ public class TabLayoutActivity extends AppCompatActivity {
 
     private void initTabLayout() {
         //MODE_FIXED标签栏不可滑动，各个标签会平分屏幕的宽度
-        tl.setTabMode(tabCount <= MOVABLE_COUNT ? TabLayout.MODE_FIXED : TabLayout.MODE_SCROLLABLE);
+        mTabLayout.setTabMode(tabCount <= MOVABLE_COUNT ? TabLayout.MODE_FIXED : TabLayout.MODE_SCROLLABLE);
         //指示条的颜色
-        tl.setSelectedTabIndicatorColor(getResources().getColor(android.R.color.holo_blue_dark));
-        tl.setSelectedTabIndicatorHeight((int) getResources().getDimension(R.dimen.indicatorHeight));
+        mTabLayout.setSelectedTabIndicatorColor(getResources().getColor(android.R.color.holo_blue_dark));
+        mTabLayout.setSelectedTabIndicatorHeight((int) getResources().getDimension(R.dimen.indicatorHeight));
+        //设置tabLayout文字选中和未选中效果
+        mTabLayout.setTabTextColors(getResources().getColor(R.color.c_333333), getResources().getColor(R.color.c_e53333));
+
+
         //关联tabLayout和ViewPager,两者的选择和滑动状态会相互影响
-        tl.setupWithViewPager(vp);
+        mTabLayout.setupWithViewPager(vp);
         //自定义标签布局
-        for (int i = 0; i < tabs.size(); i++) {
-            TabLayout.Tab tab = tl.getTabAt(i);
-            TextView tv = (TextView) LayoutInflater.from(this).inflate(R.layout.tabview_main, tl, false);
-            tv.setText(tabs.get(i));
-            assert tab != null;
-            tab.setCustomView(tv);
-        }
+//        for (int i = 0; i < tabs.size(); i++) {
+//            TabLayout.Tab tab = mTabLayout.getTabAt(i);
+//            TextView tv = (TextView) LayoutInflater.from(this).inflate(R.layout.tabview_main, mTabLayout, false);
+//            tv.setText(tabs.get(i));
+//            assert tab != null;
+//            tab.setCustomView(tv);
+//        }
     }
 
     private void initViewPager() {
