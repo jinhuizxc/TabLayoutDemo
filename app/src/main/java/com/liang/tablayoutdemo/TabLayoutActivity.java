@@ -26,7 +26,7 @@ public class TabLayoutActivity extends AppCompatActivity {
     //当标签数目小于等于4个时，标签栏不可滑动
     public static final int MOVABLE_COUNT = 4;
 
-    private int tabCount = 2;
+    private int tabCount = 10;
     private List<String> tabs;
     private List<Fragment> fragments;
 
@@ -45,7 +45,7 @@ public class TabLayoutActivity extends AppCompatActivity {
 
     private void initTabLayout() {
         //MODE_FIXED标签栏不可滑动，各个标签会平分屏幕的宽度
-//        mTabLayout.setTabMode(tabCount <= MOVABLE_COUNT ? TabLayout.MODE_FIXED : TabLayout.MODE_SCROLLABLE);
+        mTabLayout.setTabMode(tabCount <= MOVABLE_COUNT ? TabLayout.MODE_FIXED : TabLayout.MODE_SCROLLABLE);
         //指示条的颜色
         mTabLayout.setSelectedTabIndicatorColor(getResources().getColor(android.R.color.holo_blue_dark));
         mTabLayout.setSelectedTabIndicatorHeight((int) getResources().getDimension(R.dimen.indicatorHeight));
