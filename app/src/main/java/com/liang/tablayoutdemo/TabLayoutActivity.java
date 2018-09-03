@@ -14,6 +14,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Android TabLayout 在宽屏幕上tab不能平均分配的问题解决:
+ * https://blog.csdn.net/chenli_001/article/details/72844139
+ */
 public class TabLayoutActivity extends AppCompatActivity {
 
     private TabLayout mTabLayout;
@@ -22,7 +26,7 @@ public class TabLayoutActivity extends AppCompatActivity {
     //当标签数目小于等于4个时，标签栏不可滑动
     public static final int MOVABLE_COUNT = 4;
 
-    private int tabCount = 5;
+    private int tabCount = 2;
     private List<String> tabs;
     private List<Fragment> fragments;
 
@@ -41,7 +45,7 @@ public class TabLayoutActivity extends AppCompatActivity {
 
     private void initTabLayout() {
         //MODE_FIXED标签栏不可滑动，各个标签会平分屏幕的宽度
-        mTabLayout.setTabMode(tabCount <= MOVABLE_COUNT ? TabLayout.MODE_FIXED : TabLayout.MODE_SCROLLABLE);
+//        mTabLayout.setTabMode(tabCount <= MOVABLE_COUNT ? TabLayout.MODE_FIXED : TabLayout.MODE_SCROLLABLE);
         //指示条的颜色
         mTabLayout.setSelectedTabIndicatorColor(getResources().getColor(android.R.color.holo_blue_dark));
         mTabLayout.setSelectedTabIndicatorHeight((int) getResources().getDimension(R.dimen.indicatorHeight));
